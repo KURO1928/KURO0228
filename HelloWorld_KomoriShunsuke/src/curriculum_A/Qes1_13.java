@@ -46,7 +46,7 @@ public class Qes1_13 {
 		myCharVariable = '\u0000';
 
 		/*String型*/
-		myStringVariable = "これはJavaの文字列です";
+		myStringVariable = "null";
 
 		/*boolean型*/
 		myBooleanVariable = false ;

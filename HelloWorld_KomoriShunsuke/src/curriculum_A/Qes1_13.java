@@ -46,7 +46,7 @@ public class Qes1_13 {
 		myCharVariable = '\u0000';
 
 		/*String型*/
-		myStringVariable = "null";
+		myStringVariable = null;
 
 		/*boolean型*/
 		myBooleanVariable = false ;

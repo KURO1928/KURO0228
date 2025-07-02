@@ -7,30 +7,33 @@ import java.util.Scanner;
 public class Qes1_3 {
 	@SuppressWarnings("resource")
 	public static void main(String[] args) {
-		
-		boolean trueName = false;
+
 
 		Scanner scanner = new Scanner(System.in);
-		String userName = scanner.nextLine();
-		
-		while(trueName = true)
-		/*nullまたは空文字のチェック*/
-		if (userName == null || userName.isEmpty()) {
-			System.out.println("「名前を入力してください」");
-			continue;
-			/*半角英数字チェック*/
-		} else if (!userName.matches("^[a-zA-Z0-9]*$")) {
-			System.out.println("「半角英数字のみで名前を入力して下さい」");
-			continue;
-			/*文字数チェック*/
-		} else if (userName.length() > 10) {
-			System.out.println("「10文字以内にして下さい」");
-			continue;
-			/*正常時*/
-		} else {
-			System.out.println("ユーザー名「" + userName + "」を登録しました");
-			trueName = true;
-			break;
+		String userName = null;
+
+		while(true) {
+			userName = scanner.nextLine();
+
+
+			/*nullまたは空文字のチェック*/
+			if (userName == null || userName.isEmpty()) {
+				System.out.println("「名前を入力してください」");
+				continue;
+				/*半角英数字チェック*/
+			} else if (!userName.matches("^[a-zA-Z0-9]*$")) {
+				System.out.println("「半角英数字のみで名前を入力して下さい」");
+				continue;
+				/*文字数チェック*/
+			} else if (userName.length() > 10) {
+				System.out.println("「10文字以内にして下さい」");
+				continue;
+				/*正常時*/
+			} else {
+				System.out.println("ユーザー名「" + userName + "」を登録しました");
+				break;
+			}
+
 		}
 
 
@@ -43,9 +46,9 @@ public class Qes1_3 {
 
 		/*自分の手*/
 		/*ループ始まり　ジャンケンに勝つまで続ける*/
-		while(winflag = true) {
+		while(!winflag) {
 			count++;
-			
+
 			int userHand = scanner.nextInt();
 			if (userHand == 0 || userHand == 1 || userHand == 2) {
 				System.out.println( userName + "の手は「" + hands[userHand] + "」");
@@ -88,8 +91,9 @@ public class Qes1_3 {
 				System.out.println( "そしたら何かが見えてくるはずです");
 				continue;
 			}
-			
+
 		}
+
 
 
 		scanner.close();

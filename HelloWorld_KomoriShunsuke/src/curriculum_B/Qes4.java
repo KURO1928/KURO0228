@@ -12,6 +12,7 @@ public class Qes4 {
                 }
             }
             System.out.println();
+            /*もう一行あける*/
             System.out.println();
         }
     }

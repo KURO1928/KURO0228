@@ -6,8 +6,8 @@ public class Qes5 {
 	            for (int j = 1; j <= 20; j++) {
 	                // 3桁ゼロ埋めで表示
 	                System.out.print(String.format("%03d * %03d = %03d", j, i, j * i));
-	                // 9列目以外は区切りを入れる
-	                if (j != 9) {
+	                // 20列目以外は区切りを入れる
+	                if (j != 20) {
 	                    System.out.print(" || ");
 	                }
 	            }

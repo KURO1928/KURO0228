@@ -41,7 +41,6 @@ public class Qes1_3 {
 		String[] hands = {"グー", "チョキ", "パー"};
 		int count = 0;
 		boolean winflag = false;
-		scanner = new Scanner(System.in);
 
 
 		/*自分の手*/
@@ -52,6 +51,9 @@ public class Qes1_3 {
 			int userHand = scanner.nextInt();
 			if (userHand == 0 || userHand == 1 || userHand == 2) {
 				System.out.println( userName + "の手は「" + hands[userHand] + "」");
+			} else { // 無効な入力の場合
+				System.out.println("エラー: 無効な入力です。0(グー)、1(チョキ)、2(パー)のいずれかを入力してください。");
+				continue; // ループの残りをスキップし、再度入力を求める
 			}
 
 			/*相手の手*/

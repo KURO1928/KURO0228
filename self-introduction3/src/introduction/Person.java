@@ -6,7 +6,7 @@ public class Person {
 	private String lastName;
 	private int age;
 	private double height, weight;
-	
+		
 
 	Person(String firstName, String lastName, int age, double height, double weight ){
 		Person.count++;
@@ -33,4 +33,15 @@ public class Person {
 	public static void printCount(){
 		System.out.println("合計" + Person.count + "人です");
 	}
+	
+	public void  buy(Car car) {
+		car.setOwner(this.fullName());
+		System.out.println(car.getOwner() + "が購入しました");
+	}
+	
+	public void buy(Bicycle bicycle) {
+		bicycle.setOwner(this.fullName());
+		System.out.println(bicycle.getOwner() + "が購入しました");
+	}
+
 }

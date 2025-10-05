@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>タスク一覧></title>
+	<link rel="stylesheet" th:href="@{/css/destyle.css}">
+	<link rel="stylesheet" th:href="@{/css/list.css}">
+</head>
+
+<body>
+	<div class="container">
+		<div class="wrapper">
+			<h1>タスク一覧</h1>
+
+			<div class="message" th:if="${#lists.isEmpty(tasks)}">
+				<P>現在タスクは登録されていません。「新規作成」から追加してください。</P>
+			</div>
+
+			<table th:if="${not #lists.isEmpty(tasks)}" border="1">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>タイトル</th>
+						<th>内容</th>
+						<th>登録者</th>
+						<th>開始日</th>
+						<th>終了日</th>
+						<th>作成日時</th>
+						<th>更新日時</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="task : ${tasks}">
+                    <td th:text="${task.id}"></td>
+                    <td th:text="${task.username}"></td>
+                    <td th:text="${task.title}"></td>
+                    <td th:text="${task.content}"></td>
+                    <td th:text="${task.name}"></td>
+                    <td th:text="${task.startDate}"></td>
+                    <td th:text="${task.endDate}"></td>
+					<a class="edit" th:href="@{/edit}">編集</a>
+					<button class="delete">削除</button>
+			
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="btn" th:if="${not #lists.isEmpty(tasks)}">
+				<a>&lt;&lt;前</a>
+				<div class="line">
+					<a>１</a>
+					<a>２</a>
+					<a>次 &gt;&gt;</a>
+				</div>
+			</div>
+
+			<a class="new" th:href="@{/new}">＋新規作成</a>
+
+			</wrapper>
+		</div>
+</body>
+
+</html>

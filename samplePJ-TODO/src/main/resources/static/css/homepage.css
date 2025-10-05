@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+.container {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.wrapper {
+	display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.title {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.user {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: green;
+	color: white;
+	border-radius: 7px;
+	text-align: center;
+	width: 200px;
+}
+
+.login {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: blue;
+	color: white;
+	border-radius: 7px;
+	text-align: center;
+	width: 150px;
+}
+
+.btn-group {
+    display: flex;
+    gap: 15px; /* ボタン間の余白 */
+    width: 250px;
+	height: 40px;
+}
+
+.fas fa-clipboard-list i {
+	color:yellow;
+}

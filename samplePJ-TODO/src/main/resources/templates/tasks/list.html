@@ -34,16 +34,18 @@
 				</thead>
 				<tbody>
 					<tr th:each="task : ${tasks}">
-                    <td th:text="${task.id}"></td>
-                    <td th:text="${task.username}"></td>
-                    <td th:text="${task.title}"></td>
-                    <td th:text="${task.content}"></td>
-                    <td th:text="${task.name}"></td>
-                    <td th:text="${task.startDate}"></td>
-                    <td th:text="${task.endDate}"></td>
-					<a class="edit" th:href="@{/edit}">編集</a>
-					<button class="delete">削除</button>
-			
+						<td th:text="${task.id}"></td>
+						<td th:text="${task.title}"></td>
+						<td th:text="${task.content}"></td>
+						<td th:text="${task.name}"></td>
+						<td th:text="${task.startDate}"></td>
+						<td th:text="${task.endDate}"></td>
+						<td th:text="${task.createdAt}"></td>
+						<td th:text="${task.updatedAt}"></td>
+						<td>
+							<a class="edit" th:href="@{/edit/{id}(id=${task.id})}">編集</a>
+							<button class="delete">削除</button>
+						</td>
 					</tr>
 				</tbody>
 			</table>

@@ -10,17 +10,26 @@ import com.sample.common.dao.mapper.TaskMapper;
 
 @Service
 public class TaskService {
-	
-	@Autowired
-    private TaskMapper taskMapper;
 
-    public void createTask(Task task) {
-        taskMapper.insertTask(task); // Taskオブジェクトをそのまま渡す
-    }
-    
-    //追加: 全てのタスクを返すメソッド
-    public List<Task> findAllTasks() {
-        return taskMapper.findAll();
-    }
-	
+	@Autowired
+	private TaskMapper taskMapper;
+
+	public void createTask(Task task) {
+		taskMapper.insertTask(task); // Taskオブジェクトをそのまま渡す
+	}
+
+	// 追加: 全てのタスクを返すメソッド
+	public List<Task> findAllTasks() {
+		return taskMapper.findAll();
+	}
+
+	public Task findById(Long id) {
+		// TODO 自動生成されたメソッド・スタブ
+		return taskMapper.findById(id);
+	}
+
+	public void updateTask(Task task) {
+		taskMapper.updateTask(task);
+	}
+
 }

@@ -15,18 +15,24 @@
 
 			<h1 class="title">□タスク編集</h1>
 
-			<form action="/tasks" method="post">
+			<form th:action="@{/update}"  method="post">
+				<input type="hidden" name="id" th:value="${task.id}">
 				<div class="form">
 					<p>タイトル*</p>
-					<input type="text" class="column">
+					<input type="text" name="title" class="column"
+                       th:value="${task.title}">
 					<p>内容</p>
-					<input type="text" class="column">
+					<input type="text" name="content" class="column"
+                       th:value="${task.content}">
 					<p>登録者</p>
-					<input type="text" class="column">
+					<input type="text" name="username" class="column"
+                       th:value="${task.username}">
 					<p>開始日</p>
-					<input type="date" value="年/月/日" class="date">
+					<input type="date" name="startDate" class="date"
+                       th:value="${task.startDate}">
 					<p>終了日</p>
-					<input type="date" value="年/月/日" class="date">
+					<input type="date" name="endDate" class="date"
+                       th:value="${task.endDate}">
 				</div>
 
 				<div class="btn">

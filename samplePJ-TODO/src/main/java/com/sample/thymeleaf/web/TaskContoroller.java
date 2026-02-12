@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sample.common.dao.entity.Task;
 import com.sample.common.service.TaskService;
@@ -19,14 +20,6 @@ public class TaskContoroller {
 
 	@Autowired
 	private TaskService taskService;
-
-	// タスク一覧画面を表示
-	@GetMapping("/tasks")
-	public String taskslist(Model model) { // 引数にModelを追加
-		// サービスから全てのタスクを取得し、"tasks"という名前でモデルに追加
-		model.addAttribute("tasks", taskService.findAllTasks());
-		return "tasks/list";
-	}
 
 	// 新規タスク作成画面を表示
 	@GetMapping("/new")
@@ -59,6 +52,22 @@ public class TaskContoroller {
 		log.info("Task:{}", task);
 		taskService.createTask(task);
 		return "redirect:/tasks";
+	}
+
+	@PostMapping("/tasks/delete/{id}")
+	public String delete(@PathVariable Long id) {
+		taskService.deleteTask(id);
+		return "redirect:/tasks";
+	}
+
+	@GetMapping("/tasks")
+	public String tasks(@RequestParam(defaultValue = "1") int page, Model model) {
+
+		model.addAttribute("tasks", taskService.findPage(page));
+		model.addAttribute("currentPage", page);
+		model.addAttribute("totalPages", taskService.getTotalPages());
+
+		return "tasks/list";
 	}
 
 }

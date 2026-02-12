@@ -44,24 +44,48 @@
 						<td th:text="${task.updatedAt}"></td>
 						<td>
 							<a class="edit" th:href="@{/edit/{id}(id=${task.id})}">編集</a>
-							<button class="delete">削除</button>
+							<form th:action="@{/tasks/delete/{id}(id=${task.id})}"
+          method="post"
+          style="display:inline"
+          onsubmit="return confirm('削除しますか？');">
+        <button type="submit" class="delete">削除</button>
+    </form>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 
-			<div class="btn" th:if="${not #lists.isEmpty(tasks)}">
-				<a>&lt;&lt;前</a>
-				<div class="line">
-					<a>１</a>
-					<a>２</a>
-					<a>次 &gt;&gt;</a>
-				</div>
-			</div>
+			<div class="btn" th:if="${totalPages > 1}">
 
-			<a class="new" th:href="@{/new}">＋新規作成</a>
+    <!-- 前へ -->
+    <a th:if="${currentPage > 1}"
+       th:href="@{/tasks(page=${currentPage - 1})}">
+       &lt;&lt; 前
+    </a>
+
+    <!-- ページ番号 -->
+    <div class="line">
+        <a th:each="i : ${#numbers.sequence(1, totalPages)}"
+           th:href="@{/tasks(page=${i})}"
+           th:text="${i}"
+           th:classappend="${i == currentPage} ? 'active'">
+        </a>
+    </div>
+
+    <!-- 次へ -->
+    <a th:if="${currentPage < totalPages}"
+       th:href="@{/tasks(page=${currentPage + 1})}">
+       次 &gt;&gt;
+    </a>
+</div>
+
+			<!--<a class="new" th:href="@{/new}">＋新規作成</a>-->
 
 			</wrapper>
+			
+			<div class="footer">
+    <a class="new" th:href="@{/new}">＋新規作成</a>
+</div>
 		</div>
 </body>
 

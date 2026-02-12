@@ -2,8 +2,10 @@ package com.sample.common.dao.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -22,10 +24,25 @@ public interface TaskMapper {
 			+ "    updated_at = now() " + "WHERE id = #{id}")
 	void updateTask(Task task);
 
+	@Delete("DELETE FROM tasks WHERE id = #{id}")
+	void deleteById(Long id);
+
 	@Select("SELECT * FROM tasks WHERE id = #{id}")
 	Task findById(Long id);
 
 	// 追加: 全てのタスクをデータベースから取得するメソッド
 	@Select("SELECT * FROM tasks ORDER BY created_at DESC")
 	List<Task> findAll();
+
+	@Select("""
+			    SELECT *
+			    FROM tasks
+			    ORDER BY created_at DESC
+			    LIMIT #{limit} OFFSET #{offset}
+			""")
+	List<Task> findPage(@Param("limit") int limit, @Param("offset") int offset);
+
+	// 全件数取得
+	@Select("SELECT COUNT(*) FROM tasks")
+	int countAll();
 }

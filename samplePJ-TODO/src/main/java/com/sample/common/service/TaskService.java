@@ -11,6 +11,7 @@ import com.sample.common.dao.mapper.TaskMapper;
 @Service
 public class TaskService {
 
+	private static final int PAGE_SIZE = 10;
 	@Autowired
 	private TaskMapper taskMapper;
 
@@ -30,6 +31,20 @@ public class TaskService {
 
 	public void updateTask(Task task) {
 		taskMapper.updateTask(task);
+	}
+
+	public List<Task> findPage(int page) {
+		int offset = (page - 1) * PAGE_SIZE;
+		return taskMapper.findPage(PAGE_SIZE, offset);
+	}
+
+	public int getTotalPages() {
+		int total = taskMapper.countAll();
+		return (int) Math.ceil((double) total / PAGE_SIZE);
+	}
+
+	public void deleteTask(Long id) {
+		taskMapper.deleteById(id);
 	}
 
 }

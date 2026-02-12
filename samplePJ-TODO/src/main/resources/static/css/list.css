@@ -13,10 +13,12 @@
 h1 {
 	font-size: 35px;
 	font-weight: bold;
+	text-align: center;
 }
 
 table {
 	width: 100%;
+	max-width: 1100px; 
 	border-collapse: collapse;
 	border: 1px solid #ddd;
 }
@@ -29,8 +31,13 @@ thead {
 thead th,
 tbody td {
 	padding: 10px;
-	text-align: left;
+	text-align: center;
 	border: 1px solid #ddd;
+	white-space: nowrap;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f7f7f7;
 }
 
 .container {
@@ -55,13 +62,14 @@ tbody td {
 
 .btn {
 	display: flex;
-	align-items: center;
-	gap: 10px;
-	background-color: white;
-	border: solid 1px lightblue;
+    justify-content: center;   /* ← 追加 */
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    border: solid 1px lightblue;
     border-radius: 4px;
-    margin-top: 10px;
-    padding: 6px;
+    margin-top: 20px;
+    padding: 6px 12px;
 }
 
 .line a {
@@ -69,13 +77,18 @@ tbody td {
 	padding: 0 10px;
 }
 
+.footer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .new {
-	align-self: flex-end;
-	margin-top: -30px;
-	color: white;
-	background-color: green;
+    margin-top: 20px;
+    background-color: green;
+    color: white;
+    padding: 6px 12px;
     border-radius: 4px;
-    padding: 6px;
     text-decoration: none;
 }
 
